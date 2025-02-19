@@ -92,10 +92,26 @@ const NewArrivals = () => {
       ],
     },
   ];
+  function handleMouseDown(e) {
+    setIsDragging(true);
+    setStartX(e.pageX - scrollRef.current.offsetLeft);
+    setScrollLeft(scrollRef.current.scrollLeft);
+  }
+  function handleMouseMove(e) {
+    if (!isDragging) return;
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    const walk = x - startX;
+    scrollRef.current.scrollLeft = scrollLeft - walk;
+  }
+  function handleMouseUpOrLeave() {
+    setIsDragging(false);
+  }
+
   function scroll(direction) {
     const scrollAmount = direction === "left" ? -300 : 300;
-    scrollRef.current.scrollBy({ left: scrollAmount, behaviour: "smooth" });
+    scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
   }
+
   function updateScrollButtons() {
     const container = scrollRef.current;
     if (container) {
@@ -106,11 +122,6 @@ const NewArrivals = () => {
       setCanScrollLeft(leftScroll > 0);
       setCanScrollRight(rightScrollable);
     }
-    console.log({
-      scrollLeft: container.scrollLeft,
-      clientWidth: container.clientWidth,
-      containerScrollWidth: container.scrollWidth,
-    });
   }
 
   useEffect(() => {
@@ -157,7 +168,11 @@ const NewArrivals = () => {
 
       <div
         ref={scrollRef}
-        className="container mx-auto overflow-x-scroll flex space-x-6 relative"
+        className={`container mx-auto overflow-x-scroll flex space-x-6 relative ${isDragging ? "cursor-grabbing":"cursor-grab"}`}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUpOrLeave}
+        onMouseLeave={handleMouseUpOrLeave}
       >
         {newArrivals.map((product) => (
           <div
@@ -168,6 +183,7 @@ const NewArrivals = () => {
               src={product.images[0]?.url}
               alt={product.images[0]?.altText || product.name}
               className="w-full h-[500px] object-cover rounded-lg"
+              draggable="false"
             />
             <div className="absolute bottom-0 left-0 right-0 bg-black/30 backdrop-blur-md text-white p-4 rounded-b-lg">
               <Link to={`/products/${product._id}`} className="block">
