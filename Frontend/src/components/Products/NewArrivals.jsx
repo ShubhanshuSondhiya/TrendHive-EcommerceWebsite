@@ -37,7 +37,7 @@ const NewArrivals = () => {
       price: 120,
       images: [
         {
-          url: "https://picsum.photos/500/500?random=1",
+          url: "https://picsum.photos/500/500?random=3",
         },
       ],
     },
@@ -129,11 +129,12 @@ const NewArrivals = () => {
     if (container) {
       container.addEventListener("scroll", updateScrollButtons);
       updateScrollButtons();
+      return () => container.removeEventListener("scroll", updateScrollButtons);
     }
-  });
+  },[]);
 
   return (
-    <section>
+    <section className="py-16 px-4 lg:px-0">
       <div className="container mx-auto text-center mb-10 relative">
         <h2 className="text-3xl font-bold mb-4">Explore New Arrivals</h2>
         <p className="text-lg text-gray-600 mb-8">
@@ -168,7 +169,13 @@ const NewArrivals = () => {
 
       <div
         ref={scrollRef}
-        className={`container mx-auto overflow-x-scroll flex space-x-6 relative ${isDragging ? "cursor-grabbing":"cursor-grab"}`}
+        style={{
+          scrollbarWidth: "thin",
+          scrollbarColor: "#888 #f1f1f1",
+        }}
+        className={`container mx-auto overflow-x-scroll flex space-x-6 relative scrollbar-hide ${
+          isDragging ? "cursor-grabbing" : "cursor-grab"
+        }`}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUpOrLeave}

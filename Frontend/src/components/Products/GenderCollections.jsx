@@ -12,7 +12,7 @@ const GenderCollections = () => {
             alt="Women's Collection"
             className="w-full h-[450px] sm:h-[600px] md:h-[550px] lg:h-[600px] object-cover object-top"
           />
-          <div className="absolute bottom-8 left-8 bg-white/60 p-4">
+          <div className="absolute bottom-8 left-8 bg-white/70 p-4">
             <h2 className="text-2xl font-bold text-gray-900 mb-3">
               Women&apos;s Collections
             </h2>
@@ -30,7 +30,7 @@ const GenderCollections = () => {
             alt="Men's Collection"
             className="w-full h-[450px] sm:h-[600px] md:h-[550px] lg:h-[600px] object-cover object-top"
           />
-          <div className="absolute bottom-8 left-8 bg-white/60 p-4">
+          <div className="absolute bottom-8 left-8 bg-white/70 p-4">
             <h2 className="text-2xl font-bold text-gray-900 mb-3">
               Men&apos;s Collections
             </h2>
