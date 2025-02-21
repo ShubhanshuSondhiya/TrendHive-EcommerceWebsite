@@ -134,14 +134,14 @@ const NewArrivals = () => {
   },[]);
 
   return (
-    <section className="py-16 px-4 lg:px-0">
-      <div className="container mx-auto text-center mb-10 relative">
+    <section className="pb-16 px-4 lg:px-0">
+      <div className="container mx-auto text-center mb-16 relative">
         <h2 className="text-3xl font-bold mb-4">Explore New Arrivals</h2>
         <p className="text-lg text-gray-600 mb-8">
           Discover the latest styles straight off the runway, freshly added to
           keep your wardrobe on the cutting edge of fashion.
         </p>
-        <div className="absolute right-0 bottom-[-30px] flex space-x-2">
+        <div className="absolute right-0 bottom-[-40px] flex space-x-2">
           <button
             onClick={() => scroll("left")}
             disabled={!canScrollLeft}
@@ -151,7 +151,7 @@ const NewArrivals = () => {
                 : "bg-gray-200 text-gray-400 cursor-not-allowed"
             }`}
           >
-            <FiChevronLeft className="text-2xl" />
+            <FiChevronLeft className="text-sm md:text-xl lg:text-2xl" />
           </button>
           <button
             onClick={() => scroll("right")}
@@ -162,18 +162,15 @@ const NewArrivals = () => {
                 : "bg-gray-200 text-gray-400 cursor-not-allowed"
             }`}
           >
-            <FiChevronRight className="text-2xl" />
+            <FiChevronRight className="text-sm md:text-xl lg:text-2xl" />
           </button>
         </div>
       </div>
 
       <div
         ref={scrollRef}
-        style={{
-          scrollbarWidth: "thin",
-          scrollbarColor: "#888 #f1f1f1",
-        }}
-        className={`container mx-auto overflow-x-scroll flex space-x-6 relative scrollbar-hide ${
+        style={{ scrollbarWidth: "none" }}
+        className={`container mx-auto overflow-x-scroll flex space-x-6 relative ${
           isDragging ? "cursor-grabbing" : "cursor-grab"
         }`}
         onMouseDown={handleMouseDown}
