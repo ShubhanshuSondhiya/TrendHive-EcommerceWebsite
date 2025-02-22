@@ -21,7 +21,9 @@ const CollectionPage = () => {
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
-    document.removeEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
 
   useEffect(() => {
@@ -98,8 +100,8 @@ const CollectionPage = () => {
       </div>
       <div className="grow p-4 ">
         <h2 className="text-2xl uppercase mb-4">All Colection</h2>
-        <SortOptions/>
-        <ProductGrid products={products}/>
+        <SortOptions />
+        <ProductGrid products={products} />
       </div>
     </div>
   );
