@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Profile from "./pages/Profile";
 import CollectionPage from "./pages/CollectionPage";
+import ProductDetails from "./components/Products/ProductDetails";
 
 const App = () => {
   return (
@@ -21,6 +22,10 @@ const App = () => {
             <Route
               path="collections/:collection"
               element={<CollectionPage />}
+            />
+            <Route
+              path="product/:id"
+              element={<ProductDetails />}
             />
           </Route>
           <Route></Route>
