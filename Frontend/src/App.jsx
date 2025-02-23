@@ -8,6 +8,11 @@ import Profile from "./pages/Profile";
 import CollectionPage from "./pages/CollectionPage";
 import ProductDetails from "./components/Products/ProductDetails";
 import Checkout from "./components/Cart/Checkout";
+import OrderConfirmation from "./pages/OrderConfirmation";
+import OrderDetails from "./pages/OrderDetails";
+import MyOrdersPage from "./pages/MyOrdersPage";
+import AdminLayout from "./components/Admin/AdminLayout";
+import AdminHomepage from "./pages/AdminHomepage";
 
 const App = () => {
   return (
@@ -26,8 +31,13 @@ const App = () => {
             />
             <Route path="product/:id" element={<ProductDetails />} />
             <Route path="checkout" element={<Checkout />} />
+            <Route path="order-confirmation" element={<OrderConfirmation />} />
+            <Route path="order/:id" element={<OrderDetails />} />
+            <Route path="/my-orders" element={<MyOrdersPage />} />
           </Route>
-          <Route></Route>
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<AdminHomepage />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </div>

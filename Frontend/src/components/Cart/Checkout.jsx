@@ -42,7 +42,7 @@ const Checkout = () => {
     navigate("/order-confirmation");
   }
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto py-10 px-6 tracking-tighter">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto py-10 px-6 tracking-tighter font-serif">
       <div className="bg-white rounded-lg p-6">
         <h2 className="text-2xl uppercase mb-6">Checkout</h2>
         <form onSubmit={handleCreateCheckout}>
@@ -121,7 +121,7 @@ const Checkout = () => {
               />
             </div>
             <div>
-              <label className="block text-gray-700">Poastal Code</label>
+              <label className="block text-gray-700">Postal Code</label>
               <input
                 type="text"
                 value={shippingAddress.postalCode}
