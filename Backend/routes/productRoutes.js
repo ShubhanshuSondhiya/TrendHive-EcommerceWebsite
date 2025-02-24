@@ -232,12 +232,13 @@ router.get("/similar/:id", async (req, res) => {
       return res.status(404).json({
         message: "Product not found",
       });
-      const similarProducts = await Product.find({
-        _id: { $ne: id }, //exclueding the current product ID
-        gender: product.gender,
-        category: product.category,
-      }).limit(4);
     }
+    const similarProducts = await Product.find({
+      _id: { $ne: id }, //excluding the current product ID
+      gender: product.gender,
+      category: product.category,
+    }).limit(4);
+
     res.json(similarProducts);
   } catch (error) {
     console.log(error);
@@ -260,9 +261,7 @@ router.get("/best-seller", async (req, res) => {
 });
 router.get("/new-arrivals", async (req, res) => {
   try {
-    const newArrivals = await Product.findOne()
-      .sort({ createdAt: -1 })
-      .limit(8);
+    const newArrivals = await Product.find().sort({ createdAt: -1 }).limit(8);
     res.json(newArrivals);
   } catch (error) {
     console.log(error);
