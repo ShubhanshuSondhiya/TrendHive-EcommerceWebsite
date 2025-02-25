@@ -47,7 +47,7 @@ const productSchema = new mongoose.Schema(
       required: true,
     },
     collections: {
-      type: String,
+      type: [String],
       default: [],
     },
     material: {
@@ -108,8 +108,8 @@ const productSchema = new mongoose.Schema(
       length: Number,
       width: Number,
       height: Number,
-      weight: Number,
     },
+    weight: { type: Number, },
   },
   { timestamps: true }
 );
