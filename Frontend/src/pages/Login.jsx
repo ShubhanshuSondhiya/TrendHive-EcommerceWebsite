@@ -1,12 +1,18 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import login from "../assets/login.jpg";
+import { loginUser } from "../redux/slices/authSlice.js";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+
   function handleSubmit(e) {
     e.preventDefault();
+    console.log({ email, password });
+    dispatch(loginUser({ email, password }));
   }
   return (
     <div className="flex p-6">
@@ -42,18 +48,27 @@ const Login = () => {
               placeholder="Enter your password"
             />
           </div>
-          <button type="submit" className="w-full bg-black text-white rounded-lg p-2 font-semibold hover:bg-gray-800 transition">
+          <button
+            type="submit"
+            className="w-full bg-black text-white rounded-lg p-2 font-semibold hover:bg-gray-800 transition"
+          >
             Sign In
           </button>
           <p className="mt-6 text-center text-sm">
             Dont&apos;t have an account?{" "}
-            <Link to="/register" className="text-blue-500">Register</Link>
+            <Link to="/register" className="text-blue-500">
+              Register
+            </Link>
           </p>
         </form>
       </div>
       <div className="hidden md:block w-1/2 bg-gray-800">
         <div className="h-full flex flex-col justify-center items-center">
-            <img src={login} alt="Login to Account" className="h-[550px] w-full object-cover" />
+          <img
+            src={login}
+            alt="Login to Account"
+            className="h-[550px] w-full object-cover"
+          />
         </div>
       </div>
     </div>

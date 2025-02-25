@@ -1,14 +1,18 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import register from "../assets/register.jpg";
+import { registerUser } from "../redux/slices/authSlice.js";
+import { useDispatch } from "react-redux";
 
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
 
   function handleSubmit(e) {
     e.preventDefault();
+    dispatch(registerUser({ name, email, password }));
   }
   return (
     <div className="flex">
