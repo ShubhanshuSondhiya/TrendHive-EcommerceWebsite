@@ -4,7 +4,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 const FilterSidebar = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
-  const [filter, setFilter] = useState({
+  const initialFilterState = {
     category: "",
     gender: "",
     color: "",
@@ -13,7 +13,9 @@ const FilterSidebar = () => {
     brand: [],
     minPrice: 0,
     maxPrice: 100,
-  });
+  };
+
+  const [filter, setFilter] = useState(initialFilterState);
   const [priceRange, setPriceRange] = useState([0, 100]);
   const categories = ["Top Wear", "Bottom Wear"];
   const colors = [
@@ -99,10 +101,21 @@ const FilterSidebar = () => {
     setFilter(newFilters);
     updateURLParams(newFilters);
   }
+  function handleReset() {
+    setFilter(initialFilterState);
+    setPriceRange([0, 100]);
+    updateURLParams(initialFilterState);
+  }
 
   return (
     <div className="p-4">
       <h3 className="text-xl font-medium text-gray-800 mb-4">Filter</h3>
+      <button
+          onClick={handleReset}
+          className="bg-gray-200 hover:bg-gray-300 text-gray-800 py-1 px-2 rounded w-full"
+        >
+          Reset Filters
+        </button>
       <div className="mb-6">
         <label className="block text-gray-600 font-medium mb-2">Category</label>
         {categories.map((category) => (

@@ -52,7 +52,7 @@ export const updateProduct = createAsyncThunk(
   "products/updateProduct",
   async ({ id, productData }) => {
     const response = await axios.put(
-      `${import.meta.env.VITE_BACKEND_URL}/api/products/${id}`,
+      `${import.meta.env.VITE_BACKEND_URL}/api/product/${id}`,
       productData,
       {
         headers: {
@@ -78,7 +78,7 @@ const productSlice = createSlice({
   name: "products",
   initialState: {
     products: [],
-    selectedProducts: null,
+    selectedProduct: null,
     similarProducts: [],
     loading: false,
     error: null,
@@ -136,7 +136,7 @@ const productSlice = createSlice({
     });
     builder.addCase(fetchProductDetails.fulfilled, (state, action) => {
       state.loading = false;
-      state.selectedProducts = action.payload;
+      state.selectedProduct = action.payload;
     });
     builder.addCase(fetchProductDetails.rejected, (state, action) => {
       state.loading = false;
@@ -168,7 +168,7 @@ const productSlice = createSlice({
     });
     builder.addCase(fetchSimilarProducts.fulfilled, (state, action) => {
       state.loading = false;
-      state.products = action.payload;
+      state.similarProducts = action.payload;
     });
     builder.addCase(fetchSimilarProducts.rejected, (state, action) => {
       state.loading = false;
