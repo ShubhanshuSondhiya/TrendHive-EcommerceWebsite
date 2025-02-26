@@ -1,15 +1,26 @@
 import { useState } from "react";
 import { HiMagnifyingGlass, HiMiniXMark } from "react-icons/hi2";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import {
+  fetchProductsByFilters,
+  setFilters,
+} from "../../redux/slices/productsSlice";
 
 const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   function handleSearchToggle() {
     setIsOpen(!isOpen);
   }
-  function handleSubmit(e) {
+  function handleSearch(e) {
     e.preventDefault();
+    dispatch(setFilters({ search: searchTerm }));
+    dispatch(fetchProductsByFilters({ search: searchTerm }));
+    navigate(`/collections/all?search=${searchTerm}`);
     setIsOpen(false);
   }
 
@@ -21,7 +32,7 @@ const SearchBar = () => {
     >
       {isOpen ? (
         <form
-          onSubmit={handleSubmit}
+          onSubmit={handleSearch}
           className="relative flex items-center justify-center w-full"
         >
           <div className="relative w-1/2">

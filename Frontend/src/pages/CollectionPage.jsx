@@ -19,6 +19,7 @@ const CollectionPage = () => {
 
   useEffect(() => {
     dispatch(fetchProductsByFilters({ collection, ...queryParams }));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, collection, searchParams]);
 
   function toggleSidebar() {
