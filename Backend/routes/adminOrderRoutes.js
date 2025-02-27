@@ -12,7 +12,7 @@ router.get("/", protect, admin, async (req, res) => {
     console.log(error);
     res.status(500).json({ message: "Server Error" });
   }
-});
+}); 
 
 router.put("/:id", protect, admin, async (req, res) => {
   try {

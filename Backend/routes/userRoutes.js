@@ -1,7 +1,7 @@
 import express, { Router } from "express";
 import User from "../models/User.js";
 import jwt from "jsonwebtoken";
-import {protect} from "../middleware/authMiddleware.js";
+import { protect } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
@@ -21,7 +21,7 @@ router.post("/register", async (req, res) => {
     jwt.sign(
       payload,
       process.env.JWT_SECRET,
-      { expiresIn: "2h" },
+      { expiresIn: "1d" },
       (err, token) => {
         if (err) throw err;
         res.status(201).json({
@@ -55,7 +55,7 @@ router.post("/login", async (req, res) => {
     jwt.sign(
       payload,
       process.env.JWT_SECRET,
-      { expiresIn: "2h" },
+      { expiresIn: "1d" },
       (err, token) => {
         if (err) throw err;
         res.json({

@@ -12,7 +12,7 @@ const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const { user, guestId } = useSelector((state) => state.auth);
+  const { user, guestId, loading } = useSelector((state) => state.auth);
   const { cart } = useSelector((state) => state.cart);
 
   const redirect = new URLSearchParams(location.search).get("redirect") || "/";
@@ -82,7 +82,7 @@ const Register = () => {
             type="submit"
             className="w-full bg-black text-white rounded-lg p-2 font-semibold hover:bg-gray-800 transition"
           >
-            Sign Up
+            {loading ? "Loading..." : "Sign Up"}
           </button>
           <p className="mt-6 text-center text-sm">
             Already have an account?{" "}
@@ -95,12 +95,12 @@ const Register = () => {
           </p>
         </form>
       </div>
-      <div className="hidden md:block w-1/2 bg-gray-800">
+      <div className="hidden md:block w-1/2 bg-white p-12">
         <div className="h-full flex flex-col justify-center items-center">
           <img
             src={register}
             alt="Login to Account"
-            className="h-[750px] w-full object-cover object-top"
+            className="h-[85vh] w-[50vw] object-cover object-top"
           />
         </div>
       </div>

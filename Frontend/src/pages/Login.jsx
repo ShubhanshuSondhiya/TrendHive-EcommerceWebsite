@@ -11,7 +11,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const { user, guestId } = useSelector((state) => state.auth);
+  const { user, guestId, loading } = useSelector((state) => state.auth);
   const { cart } = useSelector((state) => state.cart);
 
   const redirect = new URLSearchParams(location.search).get("redirect") || "/";
@@ -71,7 +71,7 @@ const Login = () => {
             type="submit"
             className="w-full bg-black text-white rounded-lg p-2 font-semibold hover:bg-gray-800 transition"
           >
-            Sign In
+            {loading ? "Loading..." : "Sign In"}
           </button>
           <p className="mt-6 text-center text-sm">
             Dont&apos;t have an account?{" "}
@@ -84,12 +84,12 @@ const Login = () => {
           </p>
         </form>
       </div>
-      <div className="hidden md:block w-1/2 bg-gray-800">
+      <div className="hidden md:block w-1/2 bg-white p-12">
         <div className="h-full flex flex-col justify-center items-center">
           <img
             src={login}
             alt="Login to Account"
-            className="h-[550px] w-full object-cover"
+            className="h-[85vh] w-[50vw] object-cover"
           />
         </div>
       </div>
