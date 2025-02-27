@@ -2,7 +2,6 @@
 import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
 
 const PayPalButton = ({ amount, onSuccess, onError }) => {
-  console.log(amount, onSuccess, onError);
   return (
     <PayPalScriptProvider
       options={{
@@ -14,7 +13,7 @@ const PayPalButton = ({ amount, onSuccess, onError }) => {
         createOrder={(data, actions) => {
           return actions.order.create({
             purchase_units: [
-              { amount: { currency_code: "USD", value: amount } },
+              { amount: { currency_code: "USD", value: parseFloat(amount).toFixed(2) } },
             ],
           });
         }}

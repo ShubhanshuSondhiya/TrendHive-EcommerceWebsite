@@ -4,7 +4,7 @@ import { protect, admin } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-router.get("/", protect, async (req, res) => {
+router.get("/", protect, admin, async (req, res) => {
   try {
     const users = await User.find({});
     res.json(users);

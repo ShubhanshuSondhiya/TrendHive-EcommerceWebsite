@@ -34,7 +34,6 @@ const ProductDetails = ({ productId }) => {
 
   useEffect(() => {
     if (productFetchId) {
-      console.log("Dispatching fetchProductDetails for:", productFetchId);
       dispatch(fetchProductDetails(productFetchId));
     }
   }, [dispatch, productFetchId]);

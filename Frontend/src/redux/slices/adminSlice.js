@@ -50,7 +50,7 @@ export const updateUser = createAsyncThunk(
           },
         }
       );
-      return response.data;
+      return response.data.user;
     } catch (error) {
       console.log(error);
       return rejectWithValue(error.response.data);
