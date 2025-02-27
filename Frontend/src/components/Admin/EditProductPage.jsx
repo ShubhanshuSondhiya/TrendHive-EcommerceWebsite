@@ -72,7 +72,7 @@ const EditProductPage = () => {
   }
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(updateProduct(id, productData));
+    dispatch(updateProduct({id, productData}));
     navigate("/admin/products");
   }
   if (loading) return <p>Loading ...</p>;
