@@ -20,11 +20,13 @@ import OrderManagement from "./components/Admin/OrderManagement";
 import { Provider } from "react-redux";
 import store from "./redux/store.js";
 import ProtectedRoute from "./components/Common/ProtectedRoute.jsx";
+import ScrollToTop from "./components/Common/ScrollToTop.jsx";
 
 const App = () => {
   return (
     <Provider store={store}>
       <BrowserRouter>
+        <ScrollToTop />
         <Toaster position="top-right" />
         <Routes>
           <Route path="/" element={<UserLayout />}>
