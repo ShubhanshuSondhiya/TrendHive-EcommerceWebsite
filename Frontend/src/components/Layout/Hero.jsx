@@ -7,7 +7,7 @@ const Hero = () => {
       <img
         src={hero}
         alt="TrendHive"
-        className="w-full h-[75vh] md:h-[85vh] lg:h-[90vh] object-cover"
+        className="w-full h-[90vh] md:h-[85vh] lg:h-[90vh] object-cover"
       />
       <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
         <div className="text-center text-white p-6">
@@ -16,7 +16,7 @@ const Hero = () => {
             <br />
             Ready
           </h1>
-          <p className="text-sm tracking-tight md:text-lg mb-6">
+          <p className="md:text-lg mb-6">
             Explore our vacation-ready outfits with worldwide shipping.
           </p>
           <Link
