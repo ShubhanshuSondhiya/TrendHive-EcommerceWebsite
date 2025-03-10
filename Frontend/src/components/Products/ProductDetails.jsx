@@ -145,9 +145,9 @@ const ProductDetails = ({ productId }) => {
                     <button
                       key={color}
                       onClick={() => setSelectedColor(color)}
-                      className={`w-8 h-8 rounded-full border ${
+                      className={`w-8 h-8 rounded-full border-2 p-2 ${
                         selectedColor === color
-                          ? "border-3 border-black"
+                          ? "border-black shadow-[0_0_3px_3px_rgba(0,0,0,0.5)]"
                           : "border-gray-300"
                       }`}
                       style={{
