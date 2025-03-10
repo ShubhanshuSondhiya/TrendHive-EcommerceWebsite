@@ -89,7 +89,7 @@ const Login = () => {
           <img
             src={login}
             alt="Login to Account"
-            className="h-[85vh] w-[50vw] object-cover"
+            className="md:h-[65vh] lg:h-[75vh] xl:h-[85vh] w-[50vw] object-cover object-center"
           />
         </div>
       </div>

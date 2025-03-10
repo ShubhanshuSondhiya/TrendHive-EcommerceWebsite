@@ -100,7 +100,7 @@ const Register = () => {
           <img
             src={register}
             alt="Login to Account"
-            className="h-[85vh] w-[50vw] object-cover object-top"
+            className="md:h-[45vh] lg:h-[55vh] xl:h-[65vh] 2xl:h-[75vh] w-[50vw] object-cover object-top"
           />
         </div>
       </div>
