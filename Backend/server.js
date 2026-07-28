@@ -13,30 +13,11 @@ import adminRoutes from "./routes/adminRoutes.js";
 import productAdminRoutes from "./routes/productAdminRoutes.js";
 import adminOrderRoutes from "./routes/adminOrderRoutes.js";
 
-dotenv.config();
-
 const app = express();
-
-const allowedOrigins = [
-  "https://trend-hive-ecommerce-website.vercel.app",
-  "http://localhost:5173",
-  "http://localhost:3000",
-];
-
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      if (!origin) return callback(null, true);
-      if (allowedOrigins.includes(origin)) {
-        return callback(null, true);
-      }
-      return callback(new Error("Not allowed by CORS"));
-    },
-    credentials: true,
-  })
-);
-
 app.use(express.json());
+app.use(cors());
+
+dotenv.config();
 
 const PORT = process.env.PORT || 3000;
 
@@ -62,5 +43,3 @@ app.use("/api/admin/orders", adminOrderRoutes);
 app.listen(PORT, () => {
   console.log(`Server is up and running at port http://localhost:${PORT}`);
 });
-
-export default app;
